@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 1:03:35 pm'!
+'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 2:20:35 pm'!
 'Description '!
-!provides: 'Collections-Graphs' 1 2!
+!provides: 'Collections-Graphs' 1 3!
 SystemOrganization addCategory: 'Collections-Graphs'!
 
 
@@ -996,7 +996,7 @@ isTraceable
 isUndirected
 	^ self isDirected not! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/20/2016 19:17'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/20/2016 19:17'!
 C: n
 	"Answer the cycle of n vertices 1 -> 2 -> ... -> n -> 1."
 	| C |
@@ -1005,7 +1005,7 @@ C: n
 	n >= 1 ifTrue: [C addEdge: n -> 1]. "the extremal case of n = 1 is just a loop"
 	^ C! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/14/2016 00:12'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/14/2016 00:12'!
 K: n
 	"Answer the n-complete graph."
 	| K |
@@ -1014,12 +1014,12 @@ K: n
 	1 to: n do: [:i| 1 to: i do: [:j| i ~= j ifTrue: [K addEdge: i->j]]].
 	^ K! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:40'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:40'!
 N: n
 	"Answer the null graph with n vertices {1..n}."
 	^ self unordered addAll: (1 to: n); yourself! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/20/2016 19:16'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/20/2016 19:16'!
 P: n
 	"Answer the path of n vertices 1 -> 2 -> ... -> n."
 	| P |
@@ -1028,7 +1028,7 @@ P: n
 	1 to: n-1 do: [:i| P addEdge: i->(i+1)].
 	^ P! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:40'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:40'!
 S: n
 	"Answer the star graph of n vertices."
 	| S |
@@ -1036,7 +1036,7 @@ S: n
 	2 to: n do: [:i| S addEdge: 1 -> i].
 	^ S! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:40'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:40'!
 W: n
 	"Answer the wheel graph of n vertices."
 	| W |
@@ -1044,11 +1044,11 @@ W: n
 	2 to: n do: [:i| W addEdge: 1 -> i; addEdge: i -> (i=n ifTrue: [2] ifFalse: [i+1])].
 	^ W! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:40'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:40'!
 cube
 	^ self cube: 3! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 12/30/2017 16:17:15'!
+!Graph class methodsFor: 'examples' stamp: 'len 12/30/2017 16:17:15'!
 cube: n
 	"Answer an n-cube."
 	| G H |
@@ -1057,21 +1057,21 @@ cube: n
 	n - 1 timesRepeat: [H _ H × G].
 	^ H! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:40'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:40'!
 desargues
 	"Answer the Desargues graph."
 	^ self petersen: 10 order: 3! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:40'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:40'!
 dodecahedron
 	^ self petersen: 10 order: 2! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:41'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:41'!
 durer
 	"Answer the Durer graph."
 	^ self petersen: 6 order: 2! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:46'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:46'!
 exampleImplicitGraph
 	"Graph exampleImplicitGraph. BUG : There is a problem when you don't  
 	test classes without subclasses, maybe a problem in the block creation  
@@ -1082,14 +1082,14 @@ exampleImplicitGraph
 		do: [:class| "class subclasses isEmpty ifFalse: ["tree add: class"]"].
 	^ tree! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:46'!
+!Graph class methodsFor: 'examples' stamp: 'len 2/7/2022 13:21:46'!
 exampleImplicitGraph2
 	| forest |
 	forest := self implicitCollection: [:class | class ~= ProtoObject ifTrue: [{class superclass}] ifFalse:[#()]].
-	(Smalltalk organization listAtCategoryNamed: 'Domains-Graphs') do: [:className| forest add: (Smalltalk at: className)].
+	(Smalltalk organization listAtCategoryNamed: 'Collections-Graphs') do: [:className| forest add: (Smalltalk at: className)].
 	^ forest! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:47'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:47'!
 exampleImplicitGraph3
 	"Graph exampleImplicitGraph3"
 	| tree |
@@ -1097,7 +1097,7 @@ exampleImplicitGraph3
 	RootedDigraph withAllSuperclasses do: [:class| tree add: class].
 	^tree! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 23:54'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 23:54'!
 icosahedron
 	^ self unordered addEdges:
 		{1->2. 2->3. 3->1.
@@ -1106,28 +1106,28 @@ icosahedron
 		10->11. 11->12. 12->10.
 		10->4. 10->5. 10->6. 11->6. 11->7. 11->8. 12->8. 12->9. 12->4}; yourself! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:41'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:41'!
 moebiusKantor
 	"Answer the Moebius-Kantor graph."
 	^ self petersen: 8 order: 3! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:41'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:41'!
 nauru
 	"Answer the Nauru graph."
 	^ self petersen: 12 order: 5! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 23:54'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 23:54'!
 octahedron
 	^ self unordered addEdges: {1->2. 2->3. 3->1. 1->4. 2->4. 2->5. 3->5. 3->6. 1->6. 4->5. 5->6. 6->4}; yourself! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 23:54'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 23:54'!
 petersen
 	^ self unordered addEdges:
 		{1->2. 2->3. 3->4. 4->5. 5->1.
 		1->6. 2->7. 3->8. 4->9. 5->10.
 		6->8. 6->9. 7->9. 7->10. 8->10}; yourself! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 2/7/2022 10:08:01'!
+!Graph class methodsFor: 'examples' stamp: 'len 2/7/2022 10:08:01'!
 petersen: n order: k
 	"Answer the generalized Petersen graph G(n,k)."
 	| G |
@@ -1137,16 +1137,16 @@ petersen: n order: k
 		G addEdges: {i->(i+1\\n). i->(i+n). i+n->(i+k\\n+n)}].
 	^ G ! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 22:41'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 22:41'!
 prism: n
 	"Answer an n-prism."
 	^ self petersen: n order: 1! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 23:55'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 23:55'!
 square
 	^ self unordered addEdges: {1 -> 2. 2 -> 3. 3 -> 4. 4 -> 1}; yourself! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 23:55'!
+!Graph class methodsFor: 'examples' stamp: 'len 7/13/2016 23:55'!
 triangle
 	^ self unordered addEdges: {1->2. 2->3. 3->1}; yourself! !
 
@@ -1844,7 +1844,7 @@ isTree
 test
 	^ #[1 2 3 4]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'timestamp) (no'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'timestamp) (no'!
 exampleDAG
 	"RootedGraph exampleDAG."
 	| d |
@@ -1858,12 +1858,12 @@ exampleDAG
 	d addEdge: #n2 -> #n3.
 	^d! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/12/2003 22:59'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/12/2003 22:59'!
 exampleForest
 	"RootedGraph exampleForest"
 	^self unordered roots: (Set with: Number with: Stream) children: [ :class | class subclasses]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'timestamp) (no'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'timestamp) (no'!
 exampleImplicitLargeTree
 	"RootedGraph exampleImplicitLargeTree"
 	^(self
@@ -1873,12 +1873,12 @@ exampleImplicitLargeTree
 					ifTrue: [#()]
 					ifFalse: [class subclasses asSortedCollection: [ :x :y | x name < y name]]]) 		buildFromRoots: (Array with: Object)! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'timestamp) (no'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'timestamp) (no'!
 exampleImplicitSmallTree
 	"RootedGraph exampleImplicitSmallTree"
 	^(self implicitCollection: [ :class | class subclasses]) buildFromRoots: (Set with: Number)! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/12/2003 22:58'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/12/2003 22:58'!
 exampleLargeTree
 	"RootedGraph exampleLargeTree"
 	^self ordered roots: (Array with: Object) children:
@@ -1886,7 +1886,7 @@ exampleLargeTree
 					ifTrue: [#()]
 					ifFalse: [class subclasses asSortedCollection: [ :x :y | x name < y name]]]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/20/2016 06:36'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/20/2016 06:36'!
 exampleMediumLabelledTree
 	"RootedGraph exampleMediumLabelledTree"
 	^self unorderedLabeled
@@ -1897,15 +1897,15 @@ exampleMediumLabelledTree
 					ifTrue: [trg isBits ifTrue: [#variableByte] ifFalse: [#variable]]
 					ifFalse: [#normal]]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/25/2016 20:44'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/25/2016 20:44'!
 exampleMediumTree
 	^self unordered roots: (Set with: Collection) children: [ :class | class subclasses]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/14/2003 23:43'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/14/2003 23:43'!
 exampleMediumTree2
 	^self unordered roots: (Set with: Collection) children: [ :class | class subclasses]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/20/2016 06:36'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/20/2016 06:36'!
 exampleSmallLabelledTree
 	"RootedGraph exampleSmallLabelledTree"
 	^self unorderedLabeled
@@ -1913,7 +1913,7 @@ exampleSmallLabelledTree
 		children: [ :class | class subclasses]
 		label: [ :src :trg | trg category]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/20/2016 06:36'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/20/2016 06:36'!
 exampleSmallLabelledTree2
 	"RootedGraph exampleSmallLabelledTree2"
 	^self unorderedLabeled
@@ -1924,12 +1924,12 @@ exampleSmallLabelledTree2
 					ifTrue: [trg isBits ifTrue: [#variableByte] ifFalse: [#variable]]
 					ifFalse: [#normal]]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/12/2003 22:42'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/12/2003 22:42'!
 exampleSmallTree
 	"RootedGraph exampleSmallTree"
 	^self unordered roots: (Set with: Number) children: [ :class | class subclasses]! !
 
-!RootedDigraph class methodsFor: 'example graphs' stamp: 'len 2/18/2003 22:09'!
+!RootedDigraph class methodsFor: 'examples' stamp: 'len 2/18/2003 22:09'!
 exampleSmallTree2
 	"RootedGraph exampleSmallTree2"
 	^self unordered roots: (Set with: Magnitude) childrenMsg: #subclasses! !
@@ -2271,7 +2271,7 @@ graph: aGraph source: aNode
 	source _ aNode.
 	self run! !
 
-!Dijkstra methodsFor: 'private' stamp: 'len 11/30/2016 14:45:52'!
+!Dijkstra methodsFor: 'private' stamp: 'len 2/7/2022 14:19:08'!
 run
 	| queue u estimate |
 	predecessor _ Dictionary new.
@@ -2288,8 +2288,10 @@ run
 			(graph nodeAt: u) neighborsAndLabelsDo: [:each :weight|
 				estimate _ (distance at: u) + 1 "(weight ifNil: [1])".
 				(distance at: each) > estimate
-					ifTrue: [distance at: each put: estimate.
-					predecessor at: each put: u]]]! !
+					ifTrue:
+						[distance at: each put: estimate.
+						predecessor at: each put: u.
+						queue reSort]]]! !
 
 !Dijkstra class methodsFor: 'instance creation' stamp: 'len 2/14/2016 22:38'!
 graph: aGraph source: aNode
