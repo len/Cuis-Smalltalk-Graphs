@@ -1,6 +1,7 @@
-'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 2:21:42 pm'!
+'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 6:22:18 pm'!
 'Description '!
-!provides: 'Morphic-Graphs' 1 3!
+!provides: 'Morphic-Graphs' 1 4!
+!requires: 'Collections-Graphs' 1 3 nil!
 SystemOrganization addCategory: 'Morphic-Graphs'!
 
 
