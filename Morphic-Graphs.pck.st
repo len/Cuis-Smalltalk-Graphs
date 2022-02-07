@@ -1,6 +1,6 @@
-'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 1:03:32 pm'!
+'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 2:21:42 pm'!
 'Description '!
-!provides: 'Morphic-Graphs' 1 2!
+!provides: 'Morphic-Graphs' 1 3!
 SystemOrganization addCategory: 'Morphic-Graphs'!
 
 
@@ -363,7 +363,7 @@ desiredDistance: anInteger
 	"Set the distance I want between my vertices."
 	desiredDistance _ anInteger! !
 
-!SpringEdgeMorph methodsFor: 'stepping' stamp: 'len 2/26/2016 03:04'!
+!SpringEdgeMorph methodsFor: 'stepping' stamp: 'len 2/7/2022 13:29:33'!
 step
 	(source owner isNil or: [target owner isNil]) ifTrue: [^ self delete].
 "	self approachNodes."
@@ -521,10 +521,10 @@ rotateNodesBy: aPoint
 privateExtent: aPoint
 	^ (super privateExtent: aPoint) ifTrue: [self startStepping]; yourself! !
 
-!GraphMorph methodsFor: 'initialization' stamp: 'len 2/7/2022 12:59:32'!
+!GraphMorph methodsFor: 'initialization' stamp: 'len 2/7/2022 13:06:04'!
 initialize
 	super initialize.
-	self morphExtent: 300 @ 300.
+	self morphExtent: 400 @ 400.
 	self color: Color transparent.
 	self borderWidth: 0.
 	self initializeNodeToMorph.
@@ -565,16 +565,16 @@ alignToCenter
 	delta _ centerOfMass negated.
 	self nodesDo: [:each| each translateBy: delta]! !
 
-!GraphMorph methodsFor: 'stepping' stamp: 'len 7/9/2016 22:48'!
+!GraphMorph methodsFor: 'stepping' stamp: 'len 2/7/2022 13:31:29'!
 step
 	| maxDelta |
 	self nodesDo: [:each| each dampBy: 1.1]. "damping"
 	self alignToCenter.
-	maxDelta _ 0.
+	maxDelta _ 0.0.
 	self nodesDo: [:each| maxDelta _ maxDelta max: each doMove].
 	self edgesDo: [:each| each adjustBounds].
 	self redrawNeeded.
-	maxDelta < 0.1 ifTrue: [self stopStepping]! !
+	maxDelta < 0.01 ifTrue: [self stopStepping]! !
 
 !GraphMorph methodsFor: 'stepping' stamp: 'len 7/9/2016 22:48'!
 stepTime
@@ -653,7 +653,7 @@ removeEdge: anEdge label: label
 desiredDistance: aNumber
 	^ self edgesDo: [:each| each desiredDistance: aNumber]! !
 
-!SpringGraphMorph methodsFor: 'accessing' stamp: 'len 2/7/2022 12:58:18'!
+!SpringGraphMorph methodsFor: 'accessing' stamp: 'len 2/7/2022 13:20:49'!
 graph: aGraph
 	| morph desiredDistance |
 	super graph: aGraph.
@@ -661,7 +661,7 @@ graph: aGraph
 		ifTrue: [morph _ nodeToMorph at: aGraph rootNode.
 				morph morphAlign: morph morphBounds center with: self morphExtent // 2].
 	aGraph size < 100
-		ifTrue: [desiredDistance _ (self morphLocalBounds area / (aGraph radius min: 10) / 2) sqrt.
+		ifTrue: [desiredDistance _ (self morphLocalBounds area / ((aGraph radius max: 1) min: 10) / 2) sqrt.
 			components _ graph components asArray collect: [:each| each asArray collect: [:node| nodeToMorph at: node]]]
 		ifFalse:
 			[desiredDistance _ 10.
@@ -679,12 +679,12 @@ scaleEdgesBy: aNumber
 	self edgesDo: [:each| each desiredDistance: each desiredDistance * aNumber].
 	self startStepping! !
 
-!SpringGraphMorph methodsFor: 'stepping' stamp: 'len 2/7/2022 12:28:59'!
+!SpringGraphMorph methodsFor: 'stepping' stamp: 'len 2/7/2022 13:38:04'!
 approachComponents
 	| componentsDesiredDistance |
 	(components isNil or: [components size < 2])
 		ifTrue: [^ self].
-	componentsDesiredDistance _ 1.
+	componentsDesiredDistance _ 50.
 	components do: [:each|
 		components do: [:other|
 			each == other
@@ -707,11 +707,11 @@ aproachConnectedNodes
 separateAllNodes
 	self nodesDo: [:each | each separateFromAllNodes]! !
 
-!SpringGraphMorph methodsFor: 'stepping' stamp: 'len 2/7/2022 12:53:37'!
+!SpringGraphMorph methodsFor: 'stepping' stamp: 'len 2/7/2022 13:36:47'!
 step
 	| maxDelta |
 	self nodesDo: [:each| each dampBy: 1.1]. "damping"
-	self aproachConnectedNodes; separateAllNodes. "self approachComponents;"
+	self aproachConnectedNodes; separateAllNodes; approachComponents.
 	maxDelta _ 0.0.
 	self nodesDo: [:each| maxDelta _ maxDelta max: each doMove].
 	self alignToCenter.
@@ -859,9 +859,9 @@ freeze
 perturbate: n
 	dx _ dx + (dx collect: [:xi| n atRandom - n])! !
 
-!GraphNodeMorph methodsFor: 'moving' stamp: 'len 6/2/2020 16:01:50'!
+!GraphNodeMorph methodsFor: 'moving' stamp: 'len 2/7/2022 14:03:01'!
 perturbation
-	^ x collect: [:xi| 3 atRandom - 2]! !
+	^ x collect: [:xi| (3 atRandom - 2) / 10.0]! !
 
 !GraphNodeMorph methodsFor: 'moving' stamp: 'len 7/9/2016 22:42'!
 translateBy: delta
@@ -894,7 +894,7 @@ handlesMouseDown: evt
 wantsToBeDroppedInto: aMorph
 	^ aMorph isKindOf: SpringGraphMorph! !
 
-!SpringNodeMorph methodsFor: 'moving' stamp: 'len 2/7/2022 12:53:08'!
+!SpringNodeMorph methodsFor: 'moving' stamp: 'len 2/7/2022 14:00:47'!
 separateFromAllNodes
 	| force x1 x2 magnitude |
 	(owner isKindOf: SpringGraphMorph) ifFalse: [^ self].
@@ -907,7 +907,7 @@ separateFromAllNodes
 				[| difference distanceSquared |
 				difference _ x1 - x2.
 				distanceSquared _ difference squaredLength.
-				force _ force + (distanceSquared > 1.0 ifTrue: [difference / distanceSquared] ifFalse: [self perturbation])]].
+				force _ force + (distanceSquared > 0.1 ifTrue: [difference / distanceSquared] ifFalse: [self perturbation])]].
 	magnitude _ force length.
 	magnitude > 0.01 ifTrue: [dx _ dx + (force / magnitude * 2)]! !
 
@@ -931,15 +931,16 @@ approachPoint: aPoint
 	distanceSquared > 0.1 ifFalse: [^ self].
 	dx _ dx + (difference / difference norm * 2.0)"! !
 
-!Graph methodsFor: '*Morphic-Graphs' stamp: 'len 7/30/2016 07:33'!
+!Graph methodsFor: '*Morphic-Graphs' stamp: 'len 2/7/2022 13:36:24'!
 asMorph
-	| answer components |
+	^ SpringGraphMorph new graph: self
+"	| answer components |
 	(components _ self components) size = 1
 		ifTrue: [^ SpringGraphMorph new graph: self].
 	answer _ CompositeGraphMorph newRow.
 	components do: [:each|
 		answer addComponent: (SpringGraphMorph new graph: each)].
-	^ answer! !
+	^ answer"! !
 
 !Morph methodsFor: '*morphic-graphs' stamp: 'len 2/7/2022 10:28:30'!
 morphBounds
