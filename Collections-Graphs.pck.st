@@ -1,156 +1,156 @@
-'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 9:28:59 am'!
+'From Cuis 6.0 [latest update: #5062] on 7 February 2022 at 1:03:35 pm'!
 'Description '!
-!provides: 'Collections-Graphs' 1 1!
-SystemOrganization addCategory: #'Collections-Graphs'!
+!provides: 'Collections-Graphs' 1 2!
+SystemOrganization addCategory: 'Collections-Graphs'!
 
 
-!classDefinition: #MutualAssociation category: #'Collections-Graphs'!
+!classDefinition: #MutualAssociation category: 'Collections-Graphs'!
 Association subclass: #MutualAssociation
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'MutualAssociation class' category: #'Collections-Graphs'!
+!classDefinition: 'MutualAssociation class' category: 'Collections-Graphs'!
 MutualAssociation class
 	instanceVariableNames: ''!
 
-!classDefinition: #Graph category: #'Collections-Graphs'!
+!classDefinition: #Graph category: 'Collections-Graphs'!
 Collection subclass: #Graph
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'Graph class' category: #'Collections-Graphs'!
+!classDefinition: 'Graph class' category: 'Collections-Graphs'!
 Graph class
 	instanceVariableNames: ''!
 
-!classDefinition: #Digraph category: #'Collections-Graphs'!
+!classDefinition: #Digraph category: 'Collections-Graphs'!
 Graph subclass: #Digraph
 	instanceVariableNames: 'nodes nodeCreator type'
 	classVariableNames: 'InitializationBlocks'
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'Digraph class' category: #'Collections-Graphs'!
+!classDefinition: 'Digraph class' category: 'Collections-Graphs'!
 Digraph class
 	instanceVariableNames: ''!
 
-!classDefinition: #RootedDigraph category: #'Collections-Graphs'!
+!classDefinition: #RootedDigraph category: 'Collections-Graphs'!
 Digraph subclass: #RootedDigraph
 	instanceVariableNames: 'roots'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'RootedDigraph class' category: #'Collections-Graphs'!
+!classDefinition: 'RootedDigraph class' category: 'Collections-Graphs'!
 RootedDigraph class
 	instanceVariableNames: ''!
 
-!classDefinition: #UndirectedGraph category: #'Collections-Graphs'!
+!classDefinition: #UndirectedGraph category: 'Collections-Graphs'!
 Graph subclass: #UndirectedGraph
 	instanceVariableNames: 'digraph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'UndirectedGraph class' category: #'Collections-Graphs'!
+!classDefinition: 'UndirectedGraph class' category: 'Collections-Graphs'!
 UndirectedGraph class
 	instanceVariableNames: ''!
 
-!classDefinition: #Iterator category: #'Collections-Graphs'!
+!classDefinition: #Iterator category: 'Collections-Graphs'!
 Collection subclass: #Iterator
 	instanceVariableNames: 'block'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'Iterator class' category: #'Collections-Graphs'!
+!classDefinition: 'Iterator class' category: 'Collections-Graphs'!
 Iterator class
 	instanceVariableNames: ''!
 
-!classDefinition: #DAGFrontier category: #'Collections-Graphs'!
+!classDefinition: #DAGFrontier category: 'Collections-Graphs'!
 Object subclass: #DAGFrontier
 	instanceVariableNames: 'frontier bag'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'DAGFrontier class' category: #'Collections-Graphs'!
+!classDefinition: 'DAGFrontier class' category: 'Collections-Graphs'!
 DAGFrontier class
 	instanceVariableNames: ''!
 
-!classDefinition: #Dijkstra category: #'Collections-Graphs'!
+!classDefinition: #Dijkstra category: 'Collections-Graphs'!
 Object subclass: #Dijkstra
 	instanceVariableNames: 'graph source predecessor distance'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'Dijkstra class' category: #'Collections-Graphs'!
+!classDefinition: 'Dijkstra class' category: 'Collections-Graphs'!
 Dijkstra class
 	instanceVariableNames: ''!
 
-!classDefinition: #FloydWarshall category: #'Collections-Graphs'!
+!classDefinition: #FloydWarshall category: 'Collections-Graphs'!
 Object subclass: #FloydWarshall
 	instanceVariableNames: 'graph distances'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'FloydWarshall class' category: #'Collections-Graphs'!
+!classDefinition: 'FloydWarshall class' category: 'Collections-Graphs'!
 FloydWarshall class
 	instanceVariableNames: ''!
 
-!classDefinition: #GraphNode category: #'Collections-Graphs'!
+!classDefinition: #GraphNode category: 'Collections-Graphs'!
 Object subclass: #GraphNode
 	instanceVariableNames: 'value'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'GraphNode class' category: #'Collections-Graphs'!
+!classDefinition: 'GraphNode class' category: 'Collections-Graphs'!
 GraphNode class
 	instanceVariableNames: ''!
 
-!classDefinition: #ExplicitGraphNode category: #'Collections-Graphs'!
+!classDefinition: #ExplicitGraphNode category: 'Collections-Graphs'!
 GraphNode subclass: #ExplicitGraphNode
 	instanceVariableNames: 'inNeighbors outNeighbors'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'ExplicitGraphNode class' category: #'Collections-Graphs'!
+!classDefinition: 'ExplicitGraphNode class' category: 'Collections-Graphs'!
 ExplicitGraphNode class
 	instanceVariableNames: ''!
 
-!classDefinition: #LabeledExplicitGraphNode category: #'Collections-Graphs'!
+!classDefinition: #LabeledExplicitGraphNode category: 'Collections-Graphs'!
 ExplicitGraphNode subclass: #LabeledExplicitGraphNode
 	instanceVariableNames: 'label'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'LabeledExplicitGraphNode class' category: #'Collections-Graphs'!
+!classDefinition: 'LabeledExplicitGraphNode class' category: 'Collections-Graphs'!
 LabeledExplicitGraphNode class
 	instanceVariableNames: ''!
 
-!classDefinition: #ImplicitGraphNode category: #'Collections-Graphs'!
+!classDefinition: #ImplicitGraphNode category: 'Collections-Graphs'!
 GraphNode subclass: #ImplicitGraphNode
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'ImplicitGraphNode class' category: #'Collections-Graphs'!
+!classDefinition: 'ImplicitGraphNode class' category: 'Collections-Graphs'!
 ImplicitGraphNode class
 	instanceVariableNames: ''!
 
-!classDefinition: #ImplicitCollectionGraphNode category: #'Collections-Graphs'!
+!classDefinition: #ImplicitCollectionGraphNode category: 'Collections-Graphs'!
 ImplicitGraphNode subclass: #ImplicitCollectionGraphNode
 	instanceVariableNames: 'collectionBlock'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'ImplicitCollectionGraphNode class' category: #'Collections-Graphs'!
+!classDefinition: 'ImplicitCollectionGraphNode class' category: 'Collections-Graphs'!
 ImplicitCollectionGraphNode class
 	instanceVariableNames: ''!
 
-!classDefinition: #ImplicitIteratorGraphNode category: #'Collections-Graphs'!
+!classDefinition: #ImplicitIteratorGraphNode category: 'Collections-Graphs'!
 ImplicitGraphNode subclass: #ImplicitIteratorGraphNode
 	instanceVariableNames: 'iterator'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Collections-Graphs'!
-!classDefinition: 'ImplicitIteratorGraphNode class' category: #'Collections-Graphs'!
+!classDefinition: 'ImplicitIteratorGraphNode class' category: 'Collections-Graphs'!
 ImplicitIteratorGraphNode class
 	instanceVariableNames: ''!
 
@@ -681,10 +681,10 @@ neighborhoodOf: node
 	"Answer the subgraph of everything that is reachable from the given vertex."
 	^ self subgraphInducedBy: (self nodeAt: node) neighbors! !
 
-!Graph methodsFor: 'operations' stamp: 'len 7/25/2016 08:47'!
+!Graph methodsFor: 'operations' stamp: 'len 2/7/2022 10:08:11'!
 quotient
 	| Q |
-	self isLabeled ifFalse: [DomainError signal: 'not a lebeled graph'].
+	self isLabeled ifFalse: [self error: 'not a labeled graph'].
 	Q _ self copyEmpty.
 	self nodesDo: [:each| Q add: each label].
 	self fullEdgesAndLabelsDo: [:each :label| Q addEdgeFrom: each key label to: each value label label: label].
@@ -1127,11 +1127,11 @@ petersen
 		1->6. 2->7. 3->8. 4->9. 5->10.
 		6->8. 6->9. 7->9. 7->10. 8->10}; yourself! !
 
-!Graph class methodsFor: 'example graphs' stamp: 'len 7/13/2016 23:55'!
+!Graph class methodsFor: 'example graphs' stamp: 'len 2/7/2022 10:08:01'!
 petersen: n order: k
 	"Answer the generalized Petersen graph G(n,k)."
 	| G |
-	k < (n/2) ifFalse: [^ DomainError signal].
+	k < (n/2) ifFalse: [^ self error: 'k must be >= (n/2)'].
 	G _ self unordered.
 	0 to: n-1 do: [:i|
 		G addEdges: {i->(i+1\\n). i->(i+n). i+n->(i+k\\n+n)}].
